@@ -4,14 +4,14 @@ from sqlalchemy.orm import sessionmaker
 from .config import settings
 
 import os
+
 #
 # USERNAME = os.getenv("USERNAME")
 # PASSWORD = os.getenv("PASSWORD")
 
 SQLALCHEMY_DATABASE_URL = f"postgresql://{settings.USERNAME}:{settings.DB_PASSWORD}@{settings.DB_HOSTNAME}/{settings.DB_NAME}"
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False
-                            , bind=engine)
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 Base = declarative_base()
 
 
