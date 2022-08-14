@@ -22,7 +22,7 @@ def login(
         )
     if not utils.verify_pass(user_cred.password, user.password):
         raise HTTPException(
-            status_code=status.HTTP_403_FORBIDDEN_NOT_FOUND,
+            status_code=status.HTTP_403_FORBIDDEN,
             detail="Invalid Credentials",
         )
 
