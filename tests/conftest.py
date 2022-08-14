@@ -38,6 +38,17 @@ def client(session):
     app.dependency_overrides[get_db] = override_get_db
     yield TestClient(app)
 
+@pytest.fixture
+def test_user2(client):
+    user_data = {"email": "hello2@gmail.com",
+                 "password": "123456"
+                 }
+    res = client.post("/users/", json=user_data)
+    assert res.status_code == 201
+    new_user = res.json()
+    new_user["password"] = user_data["password"]
+    return new_user
+
 
 @pytest.fixture
 def test_user(client):
@@ -66,7 +77,7 @@ def authorized_client(client, token):
 
 
 @pytest.fixture
-def test_posts(test_user, session):
+def test_posts(test_user, session, test_user2):
     posts_data = [{
         "title": "first title",
         "content": "random content",
@@ -79,6 +90,10 @@ def test_posts(test_user, session):
         "title": "third title",
         "content": "random content3",
         "user_id": test_user["id"]
+    }, {
+        "title": "fourth title",
+        "content": "random content3",
+        "user_id": test_user2["id"]
     }]
 
     def create_post_modes(post):
