@@ -1,3 +1,4 @@
+requests
 alembic==1.8.1
 anyio==3.6.1
 bcrypt==3.2.2

@@ -10,6 +10,8 @@ on:
       - "test_branch"
 jobs:
   job1:
+    env:
+
     runs-on: ubuntu-latest
     steps:
       - name: pulling git repo
@@ -26,5 +28,4 @@ jobs:
         run: |
           pip install pytest
           pytest -v -s
-          pip install requests
 
