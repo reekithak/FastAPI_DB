@@ -21,3 +21,6 @@
 - alembic upgrade  0d79980473ac / head
 ##### Postman Saving
 - pm.environment.set("JWT", pm.response.json()["Access Token"]);
+
+##### HOSTED AT
+- https://fastapi-akhilsanker.herokuapp.com/docs
